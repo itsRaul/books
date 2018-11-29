@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "v-like":"/components/like/index",
+        "v-move":"/components/classic/move/index",
+        "v-esiscode":"/components/episcode/index",
+        "v-music":"/components/classic/music/index",
+        "v-essay":"/components/classic/essay/index",
+        "v-navi":"/components/navi/index"
+        
+    }
+}

@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="header">
+        <v-esiscode class="episcode" index="{{classic.index}}"/>
+        <v-like class="like" bind:like="onLike" like="{{lineStatus}}" count="{{likeCount}}"/>
+    </view>
+    <v-move hidden="{{classic.type!=100}}" content="{{classic.content}}" img="{{classic.image}}"/>
+    <v-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}" title="{{classic.title}}" src="{{classic.url}}" />
+    <v-essay hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}" />
+    <v-navi  bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}" latest="{{latest}}"class="navi"/>
+</view>
