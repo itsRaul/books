@@ -12,9 +12,7 @@ class LikeModel extends HTTP {
                 art_id: artID,
                 type: category
             },
-            success:(res)=>{
-                sCallback(res)
-            }
+            success:sCallback
         })
     }
 

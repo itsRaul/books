@@ -10,7 +10,7 @@ Component({
   //外部样式
   externalClasses:['tag-class'],
   properties: {
-    text:Object
+    text:String
   },
 
   /**
@@ -24,6 +24,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTap(event){
+      this.triggerEvent('tapping',{
+        text:this.properties.text
+      })
+    }
   }
 })
