@@ -29,26 +29,38 @@ Page({
     const detail = bookModel.getDetail(bid)
     const comments = bookModel.getComments(bid)
     const likeStatus = bookModel.getLikeStatus(bid)
+
+    Promise.all([detail,comments,likeStatus])
+    .then(res=>{
+      this.setData({
+        book:res[0],
+        comments: res[1].comments,
+        likeStatus:res[2].like_status,
+        likeCount:res[2].fav_nums
+      })
+      
+      wx.hideLoading()
+    })
     //书籍详情
-    detail.then(res=>{
-      this.setData({
-        book:res
-      })
-    })
+    // detail.then(res=>{
+    //   this.setData({
+    //     book:res
+    //   })
+    // })
 
-    //短评
-    comments.then(res => {
-      this.setData({
-        comments: res.comments
-      })
-    })
+    // //短评
+    // comments.then(res => {
+    //   this.setData({
+    //     comments: res.comments
+    //   })
+    // })
 
-    likeStatus.then(res => {
-      this.setData({
-        likeStatus:res.like_status,
-        likeCount:res.fav_nums
-      })
-    })
+    // likeStatus.then(res => {
+    //   this.setData({
+    //     likeStatus:res.like_status,
+    //     likeCount:res.fav_nums
+    //   })
+    // })
   },
 
   //点赞
@@ -80,7 +92,7 @@ Page({
     if (!comment) {
       return
     }
-    
+
     if (comment.length > 12) {
       wx.shouToast({
         title:'短评最多12个字',
