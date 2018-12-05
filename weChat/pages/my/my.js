@@ -5,7 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    authorized: false,
+    userInfo:null
+  },
+  userAuthorized(){
+    wx.getSetting({
+      success:data => {
+        if (data.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success:data => {
+              this.setData({
+                authorized: true,
+                userInfo: data.userInfo
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+  //用户信息获取
+  onGetUserInfo(event){
+    const userInfo = event.detail.userInfo
+    if (userInfo) {
+      this.setData({
+        userInfo,
+        authorized: true
+      })
+    }
   },
 
   /**
@@ -26,7 +53,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.userAuthorized()
   },
 
   /**

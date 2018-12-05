@@ -55,6 +55,7 @@ Component({
         searching: false
       })
     },
+    //标签搜索
     onConfirm(event){
       this.setData({
         searching: true
